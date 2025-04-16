@@ -18,7 +18,7 @@ GDE2025 Diabetic Retinopathy Screening
 | Study lead forums tag | https://forums.ohdsi.org/u/cindyxcai/summary |
 | Study start date | April 16, 2025|
 | Study end date | --| 
-| Protocol | A hyperlink to the protocol. The protocol is expected to be a document in the study repository itself. | 
+| Protocol | --| 
 | Publications |--| 
 | Results explorer | https://results.ohdsi.org/ |
 
