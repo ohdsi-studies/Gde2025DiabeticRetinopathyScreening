@@ -1,17 +1,9 @@
 GDE2025 Diabetic Retinopathy Screening
 =================
 
-See the **[Using This Template.md](template_docs/UsingThisTemplate.md)** for more information on how to use this template.
 
 ----
 
-An OHDSI study repository is expected to have a README.md file where the header conforms to a standard. A template README file is provided here:
-
-**[README file template](template_docs/templateREADME.md)**
-
-When initiating a repository, please copy this file, rename it to 'README.md', and fill in the fields as appropriate.
-
-The information in the repository README file will be used to automatically update the [list of OHDSI research studies](https://data.ohdsi.org/OhdsiStudies/), so it is important to fill in the template accurately, and keep it up-to-date.
 
 ## GDE2025 Diabetic Retinopathy Screening
 
