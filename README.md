@@ -5,8 +5,6 @@ GDE2025 Diabetic Retinopathy Screening
 ----
 
 
-## GDE2025 Diabetic Retinopathy Screening
-
 | Element | Description |
 | ------- | ----------- |
 | Study title      | GDE2025 - Diabetic retinopathy (DR) Screening            
