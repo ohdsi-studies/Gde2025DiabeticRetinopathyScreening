@@ -22,7 +22,7 @@ The information in the repository README file will be used to automatically upda
 | Analytics use case | `Characterization` |
 | Study type | `Clinical Application` |
 | Tags |  `GDE2025`, `Eye Care and Vision Research WG`, `Type 2 diabetes`|
-| Study lead | Dr.Cindy X. Cai|
+| Study lead | Cindy X. Cai|
 | Study lead forums tag | https://forums.ohdsi.org/u/cindyxcai/summary |
 | Study start date | April 16, 2025|
 | Study end date | --| 
