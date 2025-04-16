@@ -13,7 +13,7 @@ When initiating a repository, please copy this file, rename it to 'README.md', a
 
 The information in the repository README file will be used to automatically update the [list of OHDSI research studies](https://data.ohdsi.org/OhdsiStudies/), so it is important to fill in the template accurately, and keep it up-to-date.
 
-## Elements in the README template
+## GDE2025 Diabetic Retinopathy Screening
 
 | Element | Description |
 | ------- | ----------- |
