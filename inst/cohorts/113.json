@@ -4,6 +4,94 @@
 		"CriteriaList" : [
 			{
 				"VisitOccurrence" : {
+					"CorrelatedCriteria" : {
+						"Type" : "ANY",
+						"CriteriaList" : [
+							{
+								"Criteria" : {
+									"ProcedureOccurrence" : {
+										"CodesetId" : 8,
+										"ProcedureTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Days" : 0,
+										"Coeff" : -1
+									},
+									"End" : {
+										"Days" : 0,
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							},
+							{
+								"Criteria" : {
+									"Measurement" : {
+										"CodesetId" : 8,
+										"MeasurementTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Days" : 0,
+										"Coeff" : -1
+									},
+									"End" : {
+										"Days" : 0,
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							},
+							{
+								"Criteria" : {
+									"Observation" : {
+										"CodesetId" : 8,
+										"ObservationTypeExclude" : false
+									}
+								},
+								"StartWindow" : {
+									"Start" : {
+										"Days" : 0,
+										"Coeff" : -1
+									},
+									"End" : {
+										"Days" : 0,
+										"Coeff" : 1
+									},
+									"UseIndexEnd" : false,
+									"UseEventEnd" : false
+								},
+								"RestrictVisit" : false,
+								"IgnoreObservationPeriod" : false,
+								"Occurrence" : {
+									"Type" : 2,
+									"Count" : 1,
+									"IsDistinct" : false
+								}
+							}
+						],
+						"DemographicCriteriaList" : [],
+						"Groups" : []
+					},
 					"CodesetId" : 7,
 					"VisitTypeExclude" : false
 				}
@@ -14,7 +102,7 @@
 			"PostDays" : 0
 		},
 		"PrimaryCriteriaLimit" : {
-			"Type" : "All"
+			"Type" : "First"
 		}
 	},
 	"ConceptSets" : [
@@ -1736,24 +1824,24 @@
 		"Type" : "First"
 	},
 	"ExpressionLimit" : {
-		"Type" : "All"
+		"Type" : "First"
 	},
 	"InclusionRules" : [
 		{
-			"name" : "eye screening and measurements ",
+			"name" : "Has no prior AI screening",
+			"description" : "Exclusion criteria 1) no prior AI screening before in-office visit",
 			"expression" : {
 				"Type" : "ANY",
 				"CriteriaList" : [
 					{
 						"Criteria" : {
 							"ProcedureOccurrence" : {
-								"CodesetId" : 8,
+								"CodesetId" : 1,
 								"ProcedureTypeExclude" : false
 							}
 						},
 						"StartWindow" : {
 							"Start" : {
-								"Days" : 0,
 								"Coeff" : -1
 							},
 							"End" : {
@@ -1766,21 +1854,31 @@
 						"RestrictVisit" : false,
 						"IgnoreObservationPeriod" : false,
 						"Occurrence" : {
-							"Type" : 2,
-							"Count" : 1,
+							"Type" : 0,
+							"Count" : 0,
 							"IsDistinct" : false
 						}
-					},
+					}
+				],
+				"DemographicCriteriaList" : [],
+				"Groups" : []
+			}
+		},
+		{
+			"name" : "Has no prior telemedicine",
+			"description" : "Exclusion criteria 2) no prior telemedicine before in-office visit",
+			"expression" : {
+				"Type" : "ANY",
+				"CriteriaList" : [
 					{
 						"Criteria" : {
-							"Measurement" : {
-								"CodesetId" : 8,
-								"MeasurementTypeExclude" : false
+							"ProcedureOccurrence" : {
+								"CodesetId" : 2,
+								"ProcedureTypeExclude" : false
 							}
 						},
 						"StartWindow" : {
 							"Start" : {
-								"Days" : 0,
 								"Coeff" : -1
 							},
 							"End" : {
@@ -1793,35 +1891,8 @@
 						"RestrictVisit" : false,
 						"IgnoreObservationPeriod" : false,
 						"Occurrence" : {
-							"Type" : 2,
-							"Count" : 1,
-							"IsDistinct" : false
-						}
-					},
-					{
-						"Criteria" : {
-							"Observation" : {
-								"CodesetId" : 8,
-								"ObservationTypeExclude" : false
-							}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Days" : 0,
-								"Coeff" : -1
-							},
-							"End" : {
-								"Days" : 0,
-								"Coeff" : 1
-							},
-							"UseIndexEnd" : false,
-							"UseEventEnd" : false
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : false,
-						"Occurrence" : {
-							"Type" : 2,
-							"Count" : 1,
+							"Type" : 0,
+							"Count" : 0,
 							"IsDistinct" : false
 						}
 					}
