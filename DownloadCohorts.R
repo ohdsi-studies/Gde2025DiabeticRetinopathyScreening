@@ -2,8 +2,6 @@ library(dplyr)
 
 baseUrl <- "https://atlas-demo.ohdsi.org/WebAPI"
 
-# TODO: Need to update no specialty.
-
 cohortDefinitionSet <- ROhdsiWebApi::exportCohortDefinitionSet(
   baseUrl = baseUrl,
   cohortIds = c(
