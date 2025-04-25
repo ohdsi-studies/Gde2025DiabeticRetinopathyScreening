@@ -1,74 +1,78 @@
-################################################################################
-# INSTRUCTIONS: This script assumes you have cohorts you would like to use in an
-# ATLAS instance. Please note you will need to update the baseUrl to match
-# the settings for your enviroment. You will also want to change the 
-# CohortGenerator::saveCohortDefinitionSet() function call arguments to identify
-# a folder to store your cohorts. This code will store the cohorts in 
-# "inst/sampleStudy" as part of the template for reference. You should store
-# your settings in the root of the "inst" folder and consider removing the 
-# "inst/sampleStudy" resources when you are ready to release your study.
-# 
-# See the Download cohorts section
-# of the UsingThisTemplate.md for more details.
-# ##############################################################################
-
 library(dplyr)
+
 baseUrl <- "https://atlas-demo.ohdsi.org/WebAPI"
-# Use this if your WebAPI instance has security enables
-# ROhdsiWebApi::authorizeWebApi(
-#   baseUrl = baseUrl,
-#   authMethod = "windows"
-# )
+
+# TODO: Need to update no specialty.
+
 cohortDefinitionSet <- ROhdsiWebApi::exportCohortDefinitionSet(
   baseUrl = baseUrl,
   cohortIds = c(
-    1778211, # All exposures - celecoxib
-    1790989, # All exposures - diclofenac
-    1780946 # GI Bleed
+    1792943, # 001_newly_diagnosed_t2dm.json
+    1792942, # 002_newly_diagnosed_t2dm_3yrs_continuous_obs.json
+    1792945, # 010_prevalent_t2dm.json
+    1792944, # 011_prevalent_t2dm_3yrs_continuous_obs.json
+    1792933, # 100_dr_screening_any.json [with specialty]
+    1792932, # 101_dr_screening_any_no_specialty.json
+    1792940, # 110_dr_screening_in_office.json
+    1792934, # 111_dr_screening_in_office_first_type.json
+    # 112_dr_screening_in_office_no_specialty.json
+    1792939, # 113_dr_screening_in_office_no_specialty_first_type.json [double check; it was duped]
+    1792941, # 120_dr_screening_telemedicine.json
+    1792936, # 121_dr_screening_telemedicine_first_type_excludes_in_office_with_specialty.json
+    1792937, # 122_dr_screening_telemedicine_first_type_excludes_in_office_without_specialty.json
+    1792938, # 130_dr_screening_ai.json
+    1792930, # 131_dr_screening_ai_first_type_excludes_in_office_with_specialty.json
+    1792931 # 132_dr_screening_ai_first_type_excludes_in_office_without_specialty.json
   ),
   generateStats = TRUE
 )
 
-# Rename cohorts
-cohortDefinitionSet[cohortDefinitionSet$cohortId == 1778211,]$cohortName <- "celecoxib"
-cohortDefinitionSet[cohortDefinitionSet$cohortId == 1790989,]$cohortName <- "diclofenac"
-cohortDefinitionSet[cohortDefinitionSet$cohortId == 1780946,]$cohortName <- "GI Bleed"
+cohortDefinitionSet <- cohortDefinitionSet |>
+  mutate(
+    cohortName = case_when(
+      cohortId == 1792943 ~ "Newly Diagnosed T2DM",
+      cohortId == 1792942 ~ "Newly Diagnosed T2DM (3 Years Continuous Observation)",
+      cohortId == 1792945 ~ "Prevalent T2DM",
+      cohortId == 1792944 ~ "Prevalent T2DM (3 Years Continuous Observation)",
+      cohortId == 1792933 ~ "DR Screening, Any",
+      cohortId == 1792932 ~ "DR Screening, Any (No Specialty)",
+      cohortId == 1792940 ~ "DR Screening, In Office",
+      cohortId == 1792934 ~ "DR Screening, In Office (First Type)",
+      cohortId == 1792939 ~ "DR Screening, In Office (No Specialty, First Type)",
+      cohortId == 1792941 ~ "DR Screening, Telemedicine",
+      cohortId == 1792936 ~ "DR Screening, Telemedicine (First Type, Excludes In Office, With Specialty)",
+      cohortId == 1792937 ~ "DR Screening, Telemedicine (First Type, Excludes In Office, Without Specialty)",
+      cohortId == 1792938 ~ "DR Screening, AI",
+      cohortId == 1792930 ~ "DR Screening, AI (First Type, Excludes In Office, With Specialty)",
+      cohortId == 1792931 ~ "DR Screening, AI (First Type, Excludes In Office, Without Specialty)",
+      TRUE ~ cohortName
+    ),
+    cohortId = case_when(
+      cohortId == 1792943 ~ 1,
+      cohortId == 1792942 ~ 2,
+      cohortId == 1792945 ~ 10,
+      cohortId == 1792944 ~ 11,
+      cohortId == 1792933 ~ 100,
+      cohortId == 1792932 ~ 101,
+      cohortId == 1792940 ~ 110,
+      cohortId == 1792934 ~ 111,
+      cohortId == 1792939 ~ 113,
+      cohortId == 1792941 ~ 120,
+      cohortId == 1792936 ~ 121,
+      cohortId == 1792937 ~ 122,
+      cohortId == 1792938 ~ 130,
+      cohortId == 1792930 ~ 131,
+      cohortId == 1792931 ~ 132,
+      TRUE ~ cohortId
+    )
+  )
 
-# Re-number cohorts
-cohortDefinitionSet[cohortDefinitionSet$cohortId == 1778211,]$cohortId <- 1
-cohortDefinitionSet[cohortDefinitionSet$cohortId == 1790989,]$cohortId <- 2
-cohortDefinitionSet[cohortDefinitionSet$cohortId == 1780946,]$cohortId <- 3
-
-# Save the cohort definition set
-# NOTE: Update settingsFileName, jsonFolder and sqlFolder
-# for your study.
 CohortGenerator::saveCohortDefinitionSet(
   cohortDefinitionSet = cohortDefinitionSet,
-  settingsFileName = "inst/sampleStudy/Cohorts.csv",
-  jsonFolder = "inst/sampleStudy/cohorts",
-  sqlFolder = "inst/sampleStudy/sql/sql_server",
+  settingsFileName = "inst/cohorts.csv",
+  jsonFolder = "inst/cohorts",
+  sqlFolder = "inst/sql/sql_server",
 )
 
 
-# Download and save the negative control outcomes
-negativeControlOutcomeCohortSet <- ROhdsiWebApi::getConceptSetDefinition(
-  conceptSetId = 1885090,
-  baseUrl = baseUrl
-) %>%
-  ROhdsiWebApi::resolveConceptSet(
-    baseUrl = baseUrl
-  ) %>%
-  ROhdsiWebApi::getConcepts(
-    baseUrl = baseUrl
-  ) %>%
-  rename(outcomeConceptId = "conceptId",
-         cohortName = "conceptName") %>%
-  mutate(cohortId = row_number() + 100) %>%
-  select(cohortId, cohortName, outcomeConceptId)
-
-# NOTE: Update file location for your study.
-CohortGenerator::writeCsv(
-  x = negativeControlOutcomeCohortSet,
-  file = "inst/sampleStudy/negativeControlOutcomes.csv",
-  warnOnFileNameCaseMismatch = F
-)
+# No negative control outcomes.

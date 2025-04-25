@@ -3,8 +3,9 @@
 	"PrimaryCriteria" : {
 		"CriteriaList" : [
 			{
-				"DrugEra" : {
-					"CodesetId" : 0
+				"ProcedureOccurrence" : {
+					"CodesetId" : 0,
+					"ProcedureTypeExclude" : false
 				}
 			}
 		],
@@ -19,24 +20,24 @@
 	"ConceptSets" : [
 		{
 			"id" : 0,
-			"name" : "Celecoxib",
+			"name" : "[GDE2025 DR] AI screening",
 			"expression" : {
 				"items" : [
 					{
 						"concept" : {
-							"CONCEPT_ID" : 1118084,
-							"CONCEPT_NAME" : "celecoxib",
+							"CONCEPT_ID" : 759697,
+							"CONCEPT_NAME" : "Imaging of retina for detection or monitoring of disease; point-of-care autonomous analysis and report, unilateral or bilateral",
 							"STANDARD_CONCEPT" : "S",
 							"STANDARD_CONCEPT_CAPTION" : "Standard",
 							"INVALID_REASON" : "V",
 							"INVALID_REASON_CAPTION" : "Valid",
-							"CONCEPT_CODE" : "140587",
-							"DOMAIN_ID" : "Drug",
-							"VOCABULARY_ID" : "RxNorm",
-							"CONCEPT_CLASS_ID" : "Ingredient"
+							"CONCEPT_CODE" : "92229",
+							"DOMAIN_ID" : "Procedure",
+							"VOCABULARY_ID" : "CPT4",
+							"CONCEPT_CLASS_ID" : "CPT4"
 						},
 						"isExcluded" : false,
-						"includeDescendants" : false,
+						"includeDescendants" : true,
 						"includeMapped" : false
 					}
 				]
@@ -47,13 +48,12 @@
 		"Type" : "First"
 	},
 	"ExpressionLimit" : {
-		"Type" : "First"
+		"Type" : "All"
 	},
 	"InclusionRules" : [],
 	"EndStrategy" : {
-		"CustomEra" : {
-			"DrugCodesetId" : 0,
-			"GapDays" : 30,
+		"DateOffset" : {
+			"DateField" : "StartDate",
 			"Offset" : 0
 		}
 	},
