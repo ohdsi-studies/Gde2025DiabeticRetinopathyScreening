@@ -10,36 +10,58 @@
 # !!! PLEASE RESTART R AFTER RUNNING renv::restore() !!!
 #
 # -------------------------------------------------------
-#renv::restore()
+# renv::restore()
+
+## CONFIGURATION FOR RUNNING STUDY PACKAGE
+# Uncomment the below lines and run it. This will copy the contents of "env.example.R"
+# to "env.R". You must then edit "env.R" to set the values for your environment.
+# 
+# file.copy("env.example.R", "env.R")
 
 # ENVIRONMENT SETTINGS NEEDED FOR RUNNING Strategus ------------
 Sys.setenv("_JAVA_OPTIONS"="-Xmx4g") # Sets the Java maximum heap space to 4GB
 Sys.setenv("VROOM_THREADS"=1) # Sets the number of threads to 1 to avoid deadlocks on file system
 
 ##=========== START OF INPUTS ==========
-cdmDatabaseSchema <- "main"
-workDatabaseSchema <- "main"
-outputLocation <- file.path(getwd(), "results")
-databaseName <- "Eunomia" # Only used as a folder name for results from the study
-minCellCount <- 5
-cohortTableName <- "sample_study"
 
-# Create the connection details for your CDM
+if(!file.exists("env.R")) {
+  stop("Please copy env.example.R to env.R and edit the file to set your environment variables.")
+}
+
+# !!! WIP !!!
+source("env.R")
+
+# Run below and inspect before proceeding. If anything is missing or off, please fix it in the env.R file.
+invisible({
+  cat("Settings:\n")
+  cat("-------------------------------\n")
+  cat(sprintf("Study output folder:      %s\n", studyOutputDirectory))
+  cat(sprintf("Database:                 %s\n", dbms))
+  cat(sprintf("Database server:          %s\n", dbServer))
+  cat(sprintf("Database username:        %s\n", dbUsername))
+  cat(sprintf("Database password:        %s\n", ifelse(nchar(dbPassword) > 0, "********", "No password provided")))
+  cat(sprintf("Database name:            %s\n", dbName))
+  cat(sprintf("Database port:            %s\n", dbPort))
+  cat(sprintf("CDM database schema:      %s\n", cdmDatabaseSchema))
+  cat(sprintf("Work database schema:     %s\n", cohortDatabaseSchema))
+  cat(sprintf("Database ID:              %s\n", databaseId))
+  cat("-------------------------------\n")
+})
+
+
+# Create the connection for your CDM. Please note that 
+# 
 # More details on how to do this are found here:
 # https://ohdsi.github.io/DatabaseConnector/reference/createConnectionDetails.html
-# connectionDetails <- DatabaseConnector::createConnectionDetails(
-#   dbms = Sys.getenv("DBMS_TYPE"),
-#   connectionString = Sys.getenv("CONNECTION_STRING"),
-#   user = Sys.getenv("DBMS_USERNAME"),
-#   password = Sys.getenv("DBMS_PASSWORD")
-# )
 
-# For this example we will use the Eunomia sample data 
-# set. This library is not installed by default so you
-# can install this by running:
-#
-# install.packages("Eunomia")
-connectionDetails <- Eunomia::getEunomiaConnectionDetails()
+connectionDetails <- DatabaseConnector::createConnectionDetails(
+  dbms = dbms,
+  server = dbServer,
+  user = dbUsername,
+  password = dbPassword,
+  port = dbPort,
+  pathToDriver = Sys.getenv('DATABASECONNECTOR_JAR_FOLDER'))
+
 
 # You can use this snippet to test your connection
 #conn <- DatabaseConnector::connect(connectionDetails)
@@ -47,7 +69,7 @@ connectionDetails <- Eunomia::getEunomiaConnectionDetails()
 
 ##=========== END OF INPUTS ==========
 analysisSpecifications <- ParallelLogger::loadSettingsFromJson(
-  fileName = "inst/sampleStudy/sampleStudyAnalysisSpecification.json"
+  fileName = "inst/sampleStudyAnalysisSpecification.json"
 )
 
 executionSettings <- Strategus::createCdmExecutionSettings(
