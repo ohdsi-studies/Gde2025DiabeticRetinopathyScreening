@@ -61,7 +61,7 @@ invisible({
   # Sets the Java maximum heap space. 
   # Default: 4g
   if (!exists("javaMaxHeapSize")) {
-    javaMaxHeapSize <- "4G"
+    javaMaxHeapSize <- "4g"
   } else {
     if (!is.character(javaMaxHeapSize) || length(javaMaxHeapSize) != 1 || !grepl("^[0-9]+[GgMm]$", javaMaxHeapSize)) {
       stop("Invalid javaMaxHeapSize. It must be a string like '4G' or '512M'.")
