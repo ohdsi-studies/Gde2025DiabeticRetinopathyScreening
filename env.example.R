@@ -46,6 +46,11 @@ cdmDatabaseSchema <- "dbo"
 # and store its results.
 workDatabaseSchema <- "res"
 
+# Results Schema: This is the schema where the shiny results will be stored to run
+# the app locally. This will only be used if you want to inspect results on your
+# local machine.
+resultsDatabaseSchema <- "res_view"
+
 # Cohort Table Name: This is the name of the table where the study will create its cohorts.
 cohortTableName <- "dr_screening"
 

@@ -11,17 +11,17 @@
 # https://ohdsi.github.io/Strategus/articles/WorkingWithResults.html
 # ##############################################################################
 
-# Code for creating the result schema and tables in a PostgreSQL database
-resultsDatabaseSchema <- "results"
+source("env.R")
+
 analysisSpecifications <- ParallelLogger::loadSettingsFromJson(
-  fileName = "inst/sampleStudy/sampleStudyAnalysisSpecification.json"
+  fileName = "inst/drScreeningStudyAnalysisSpecification.json"
 )
 
 resultsDatabaseConnectionDetails <- DatabaseConnector::createConnectionDetails(
   dbms = "postgresql",
-  server = Sys.getenv("OHDSI_RESULTS_DATABASE_SERVER"),
-  user = Sys.getenv("OHDSI_RESULTS_DATABASE_USER"),
-  password = Sys.getenv("OHDSI_RESULTS_DATABASE_PASSWORD")
+  server = dbServer,
+  user = dbUsername,
+  password = dbPassword
 )
 
 # Create results data model -------------------------
