@@ -183,10 +183,10 @@ treatmentPatternsModuleSpecifications <- tpSettingsCreator$createModuleSpecifica
 # Create the analysis specifications ------------------------------------------
 analysisSpecifications <- Strategus::createEmptyAnalysisSpecificiations() |>
   Strategus::addSharedResources(cohortDefinitionShared) |> 
-  # Strategus::addModuleSpecifications(cohortGeneratorModuleSpecifications) |>
-  # Strategus::addModuleSpecifications(cohortDiagnosticsModuleSpecifications) |>
-  # Strategus::addModuleSpecifications(characterizationModuleSpecifications) |>
-  # Strategus::addModuleSpecifications(cohortIncidenceModuleSpecifications) |>
+  Strategus::addModuleSpecifications(cohortGeneratorModuleSpecifications) |>
+  Strategus::addModuleSpecifications(cohortDiagnosticsModuleSpecifications) |>
+  Strategus::addModuleSpecifications(characterizationModuleSpecifications) |>
+  Strategus::addModuleSpecifications(cohortIncidenceModuleSpecifications) |>
   Strategus::addModuleSpecifications(treatmentPatternsModuleSpecifications)
 
 ParallelLogger::saveSettingsToJson(

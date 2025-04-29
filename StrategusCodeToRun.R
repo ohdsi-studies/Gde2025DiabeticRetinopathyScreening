@@ -91,7 +91,6 @@ invisible({
   ParallelLogger::logInfo(sprintf("Database server:          %s", dbServer))
   ParallelLogger::logInfo(sprintf("Database username:        %s", dbUsername))
   ParallelLogger::logInfo(sprintf("Database password:        %s", ifelse(nchar(dbPassword) > 0, "********", "No password provided")))
-  ParallelLogger::logInfo(sprintf("Database name:            %s", dbName))
   ParallelLogger::logInfo(sprintf("Database port:            %s", dbPort))
   ParallelLogger::logInfo(sprintf("CDM database schema:      %s", cdmDatabaseSchema))
   ParallelLogger::logInfo(sprintf("Work database schema:     %s", workDatabaseSchema))
