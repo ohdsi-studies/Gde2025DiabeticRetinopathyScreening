@@ -12,6 +12,7 @@ timeAtRisks <- tibble(
 
 studyStartDate <- '20210101' #YYYYMMDD
 studyEndDate <- '20241231'   #YYYYMMDD
+
 # Some of the settings require study dates with hyphens
 studyStartDateWithHyphens <- gsub("(\\d{4})(\\d{2})(\\d{2})", "\\1-\\2-\\3", studyStartDate)
 studyEndDateWithHyphens <- gsub("(\\d{4})(\\d{2})(\\d{2})", "\\1-\\2-\\3", studyEndDate)
@@ -30,7 +31,7 @@ if (any(duplicated(cohortDefinitionSet$cohortId))) {
 }
 
 # Create some data frames to hold the cohorts we'll use in each analysis ---------------
-# Outcomes: The outcomes for this study take values <= 100
+# Outcomes: The outcomes for this study take values >= 100
 oList <- cohortDefinitionSet |>
   filter(cohortId >= 100) |>
   mutate(outcomeCohortId = cohortId, outcomeCohortName = cohortName) |>
@@ -124,10 +125,12 @@ analysis1 <- CohortIncidence::createIncidenceAnalysis(
   outcomes = seq_len(nrow(oList)),
   tars = seq_along(tars)
 )
+
 irStudyWindow <- CohortIncidence::createDateRange(
   startDate = studyStartDateWithHyphens,
   endDate = studyEndDateWithHyphens
 )
+
 irDesign <- CohortIncidence::createIncidenceDesign(
   targetDefs = targetList,
   outcomeDefs = outcomeList,
@@ -180,13 +183,13 @@ treatmentPatternsModuleSpecifications <- tpSettingsCreator$createModuleSpecifica
 # Create the analysis specifications ------------------------------------------
 analysisSpecifications <- Strategus::createEmptyAnalysisSpecificiations() |>
   Strategus::addSharedResources(cohortDefinitionShared) |> 
-  Strategus::addModuleSpecifications(cohortGeneratorModuleSpecifications) |>
-  Strategus::addModuleSpecifications(cohortDiagnosticsModuleSpecifications) |>
-  Strategus::addModuleSpecifications(characterizationModuleSpecifications) |>
-  Strategus::addModuleSpecifications(cohortIncidenceModuleSpecifications) |> 
+  # Strategus::addModuleSpecifications(cohortGeneratorModuleSpecifications) |>
+  # Strategus::addModuleSpecifications(cohortDiagnosticsModuleSpecifications) |>
+  # Strategus::addModuleSpecifications(characterizationModuleSpecifications) |>
+  # Strategus::addModuleSpecifications(cohortIncidenceModuleSpecifications) |>
   Strategus::addModuleSpecifications(treatmentPatternsModuleSpecifications)
 
 ParallelLogger::saveSettingsToJson(
   analysisSpecifications, 
-  file.path("inst", "sampleStudyAnalysisSpecification.json")
+  file.path("inst", "drScreeningStudyAnalysisSpecification.json")
 )
