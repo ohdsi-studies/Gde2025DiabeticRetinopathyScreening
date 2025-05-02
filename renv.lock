@@ -328,7 +328,7 @@
     },
     "TreatmentPatterns": {
       "Package": "TreatmentPatterns",
-      "Version": "3.0.0",
+      "Version": "3.0.3",
       "Source": "Repository",
       "Repository": "CRAN"
     },
