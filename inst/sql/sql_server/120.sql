@@ -82,12 +82,6 @@ FROM (
 
 ;
 
--- date offset strategy
-
-select event_id, person_id, 
-  case when DATEADD(day,0,start_date) > op_end_date then op_end_date else DATEADD(day,0,start_date) end as end_date
-INTO #strategy_ends
-from #included_events;
 
 
 -- generate cohort periods into #final_cohort
@@ -100,9 +94,8 @@ from ( -- first_ends
 	  from #included_events I
 	  join ( -- cohort_ends
 -- cohort exit dates
--- End Date Strategy
-SELECT event_id, person_id, end_date from #strategy_ends
-
+-- By default, cohort exit at the event's op end date
+select event_id, person_id, op_end_date as end_date from #included_events
     ) CE on I.event_id = CE.event_id and I.person_id = CE.person_id and CE.end_date >= I.start_date
 	) F
 	WHERE F.ordinal = 1
@@ -167,8 +160,6 @@ delete from @results_database_schema.cohort_censor_stats where cohort_definition
 
 
 
-TRUNCATE TABLE #strategy_ends;
-DROP TABLE #strategy_ends;
 
 
 TRUNCATE TABLE #cohort_rows;
