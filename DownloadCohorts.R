@@ -74,5 +74,17 @@ CohortGenerator::saveCohortDefinitionSet(
   sqlFolder = "inst/sql/sql_server",
 )
 
+# Temp: Limited set for testing
+cohortDefinitionSetLimited <- cohortDefinitionSet |> 
+filter(
+  cohortId %in% c(1,100)
+)
+
+CohortGenerator::saveCohortDefinitionSet(
+  cohortDefinitionSet = cohortDefinitionSetLimited,
+  settingsFileName = "inst/cohorts_limited.csv",
+  jsonFolder = "inst/cohorts/limited",
+  sqlFolder = "inst/sql/sql_server/limited",
+)
 
 # No negative control outcomes.

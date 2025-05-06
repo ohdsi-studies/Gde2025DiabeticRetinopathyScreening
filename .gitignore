@@ -1,6 +1,9 @@
 # Env
 env.R
 
+# Error reports
+errorReport*
+
 # History files
 .Rhistory
 .Rapp.history
@@ -59,3 +62,4 @@ results/
 
 # JetBrains
 .idea/
+

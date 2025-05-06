@@ -186,8 +186,8 @@ analysisSpecifications <- Strategus::createEmptyAnalysisSpecificiations() |>
   Strategus::addModuleSpecifications(cohortGeneratorModuleSpecifications) |>
   Strategus::addModuleSpecifications(cohortDiagnosticsModuleSpecifications) |>
   Strategus::addModuleSpecifications(characterizationModuleSpecifications) |>
-  Strategus::addModuleSpecifications(cohortIncidenceModuleSpecifications) |>
-  Strategus::addModuleSpecifications(treatmentPatternsModuleSpecifications)
+  Strategus::addModuleSpecifications(cohortIncidenceModuleSpecifications) #|>
+  #Strategus::addModuleSpecifications(treatmentPatternsModuleSpecifications)
 
 ParallelLogger::saveSettingsToJson(
   analysisSpecifications, 
