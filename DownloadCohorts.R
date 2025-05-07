@@ -77,7 +77,7 @@ CohortGenerator::saveCohortDefinitionSet(
 # Temp: Limited set for testing
 cohortDefinitionSetLimited <- cohortDefinitionSet |> 
 filter(
-  cohortId %in% c(1,100)
+  cohortId == 1 | cohortId >= 100
 )
 
 CohortGenerator::saveCohortDefinitionSet(

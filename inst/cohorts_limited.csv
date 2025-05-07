@@ -1,3 +1,14 @@
 atlas_id,cohort_id,cohort_name,logic_description,generate_stats
 1792943,1,Newly Diagnosed T2DM,NA,TRUE
 1793022,100,"DR Screening, Any",NA,TRUE
+1793027,101,"DR Screening, Any (No Specialty)",NA,TRUE
+1792940,110,"DR Screening, In Office",NA,TRUE
+1792939,111,"DR Screening, In Office (No Specialty)",NA,TRUE
+1792934,112,"DR Screening, In Office (First Type)",NA,TRUE
+1792935,113,"DR Screening, In Office (No Specialty, First Type)",NA,TRUE
+1792941,120,"DR Screening, Telemedicine",NA,TRUE
+1792936,121,"DR Screening, Telemedicine (First Type, Excludes In Office, With Specialty)",NA,TRUE
+1792937,122,"DR Screening, Telemedicine (First Type, Excludes In Office, Without Specialty)",NA,TRUE
+1792938,130,"DR Screening, AI",NA,TRUE
+1792930,131,"DR Screening, AI (First Type, Excludes In Office, With Specialty)",NA,TRUE
+1792931,132,"DR Screening, AI (First Type, Excludes In Office, Without Specialty)",NA,TRUE
