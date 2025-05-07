@@ -1,5 +1,6 @@
 atlas_id,cohort_id,cohort_name,logic_description,generate_stats
-1792943,1,Newly Diagnosed T2DM,NA,TRUE
+1792942,2,Newly Diagnosed T2DM (3 Years Continuous Observation),NA,TRUE
+1792944,11,Prevalent T2DM (3 Years Continuous Observation),NA,TRUE
 1793022,100,"DR Screening, Any",NA,TRUE
 1793027,101,"DR Screening, Any (No Specialty)",NA,TRUE
 1792940,110,"DR Screening, In Office",NA,TRUE

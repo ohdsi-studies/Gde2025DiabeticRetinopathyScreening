@@ -66,10 +66,10 @@
 		],
 		"ObservationWindow" : {
 			"PriorDays" : 0,
-			"PostDays" : 0
+			"PostDays" : 1095
 		},
 		"PrimaryCriteriaLimit" : {
-			"Type" : "First"
+			"Type" : "All"
 		}
 	},
 	"ConceptSets" : [
@@ -564,6 +564,22 @@
 	},
 	"InclusionRules" : [
 		{
+			"name" : "age is over 18 ",
+			"expression" : {
+				"Type" : "ALL",
+				"CriteriaList" : [],
+				"DemographicCriteriaList" : [
+					{
+						"Age" : {
+							"Value" : 18,
+							"Op" : "gte"
+						}
+					}
+				],
+				"Groups" : []
+			}
+		},
+		{
 			"name" : "no Type 1 diabetes mellitus diagnosis on or prior to T2DM",
 			"expression" : {
 				"Type" : "ALL",
@@ -666,66 +682,6 @@
 					}
 				],
 				"DemographicCriteriaList" : [],
-				"Groups" : []
-			}
-		},
-		{
-			"name" : "180 days of look back ",
-			"expression" : {
-				"Type" : "ALL",
-				"CriteriaList" : [
-					{
-						"Criteria" : {
-							"ObservationPeriod" : {}
-						},
-						"StartWindow" : {
-							"Start" : {
-								"Coeff" : -1
-							},
-							"End" : {
-								"Days" : 180,
-								"Coeff" : -1
-							},
-							"UseIndexEnd" : false,
-							"UseEventEnd" : false
-						},
-						"EndWindow" : {
-							"Start" : {
-								"Days" : 1,
-								"Coeff" : 1
-							},
-							"End" : {
-								"Coeff" : 1
-							},
-							"UseIndexEnd" : false,
-							"UseEventEnd" : true
-						},
-						"RestrictVisit" : false,
-						"IgnoreObservationPeriod" : false,
-						"Occurrence" : {
-							"Type" : 2,
-							"Count" : 1,
-							"IsDistinct" : false
-						}
-					}
-				],
-				"DemographicCriteriaList" : [],
-				"Groups" : []
-			}
-		},
-		{
-			"name" : "age over 18",
-			"expression" : {
-				"Type" : "ALL",
-				"CriteriaList" : [],
-				"DemographicCriteriaList" : [
-					{
-						"Age" : {
-							"Value" : 18,
-							"Op" : "gte"
-						}
-					}
-				],
 				"Groups" : []
 			}
 		}
