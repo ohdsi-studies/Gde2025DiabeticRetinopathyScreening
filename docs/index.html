@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>index.knit</title>
+
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+<div class="ohdsi-logo-container">
+  <img src="OHDSI_logo.png" alt="OHDSI Logo">
+</div>
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore"><div class="line-block">RESEARCH PROTOCOL<br />
+<br />
+GDE2025 - Diabetic Retinopathy (DR) Screening Network Study</div></h1>
+<h3 class="subtitle">Version: 1.1.0</h3>
+
+</div>
+
+
+<!-- # TODO List {-} -->
+<!-- * Limited PS model -->
+<div id="list-of-abbreviations" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> List of Abbreviations</h1>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td style="text-align:left;">
+GDE
+</td>
+<td style="text-align:left;">
+Guideline Driven Evidence
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OHDSI
+</td>
+<td style="text-align:left;">
+Observational Health Data Sciences and Informatics
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HADES
+</td>
+<td style="text-align:left;">
+Health Analytics Data-to-Evidence Suite
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+T2D
+</td>
+<td style="text-align:left;">
+Type 2 diabetes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DR
+</td>
+<td style="text-align:left;">
+diabetic retinopathy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DME
+</td>
+<td style="text-align:left;">
+diabetic macular edema
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AI
+</td>
+<td style="text-align:left;">
+artificial intelligence
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CCI
+</td>
+<td style="text-align:left;">
+Charlson Comorbidity Index
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DCSI
+</td>
+<td style="text-align:left;">
+Diabetes Complications Severity Index
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="responsible-parties" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Responsible Parties</h1>
+<div id="investigators" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Investigators</h2>
+<table style="NAborder-bottom: 0; margin-left: auto; margin-right: auto;" class="table table-striped">
+<thead>
+<tr>
+<th style="text-align:left;">
+Investigator
+</th>
+<th style="text-align:left;">
+Institution/Affiliation
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 10em; ">
+Paul Nagy
+</td>
+<td style="text-align:left;width: 35em; ">
+Department of Biomedical Informatics and Data Science, Johns Hopkins University, Baltimore, MD, USA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+Erik Westlund
+</td>
+<td style="text-align:left;width: 35em; ">
+Department of Biostatistics, Johns Hopkins University, Baltimore, MD, USA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+Benjamin Martin
+</td>
+<td style="text-align:left;width: 35em; ">
+Department of Biomedical Informatics and Data Science, Johns Hopkins University, Baltimore, MD, USA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+Haeun Lee
+</td>
+<td style="text-align:left;width: 35em; ">
+Department of Biomedical Informatics and Data Science, Johns Hopkins University, Baltimore, MD, USA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+Tran Diep
+</td>
+<td style="text-align:left;width: 35em; ">
+Wilmer Eye Institute, Johns Hopkins Hospital, Baltimore, MD, USA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+Cindy Cai *
+</td>
+<td style="text-align:left;width: 35em; ">
+Wilmer Eye Institute, Johns Hopkins Hospital, Baltimore, MD, USA
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<sup></sup> * Principal Investigator
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+<div id="disclosures" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Disclosures</h2>
+<p>This study is undertaken within Observational Health Data Sciences and Informatics (OHDSI), an open collaboration.<strong>CC</strong></p>
+</div>
+</div>
+<div id="abstract" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Abstract</h1>
+<p><strong>Background</strong>: Diabetic retinopathy (DR) screening is critical for the prevention of vision loss among patients with diabetes. With expanding technology, DR screening can now occur both in-office and via telemedicine and autonomous artificial intelligence (AI). Despite rapid advances in DR screening technologies, real-world evidence on their adoption and use remains limited.</p>
+<p><strong>Purpose</strong>: To characterize the current landscape of the 3 types of DR screening (in-office, telemedicine, AI)</p>
+<p><strong>Design</strong>: Retrospective characterization study across the OHDSI Evidence Network.</p>
+<p><strong>Subjects</strong>: Adults (≥18 years) with prevalent and incident type 2 diabetes (T2D) in the study period from 1/1/2021 to 12/31/2024 will be included.</p>
+<p><strong>Methods</strong>: We will compare the baseline characteristics of patients who receive each form of DR screening, calculate the annual proportion of patients with T2D who undergo each form of DR screening, compare the time from T2D diagnosis to initial DR screening by each of the 3 modalities, and finally characterize the sequence of DR screening by modality in the 3 years after T2D diagnosis.</p>
+<p><strong>Conclusions</strong>: Characterizing the current landscape of DR screening will highlight opportunities to expand screening, particularly the newer AI technology, to ultimately reduce vision loss.</p>
+</div>
+<div id="amendments-and-updates" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Amendments and Updates</h1>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Number
+</th>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+Section of study protocol
+</th>
+<th style="text-align:left;">
+Amendment or update
+</th>
+<th style="text-align:left;">
+Reason
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+16-April-2025
+</td>
+<td style="text-align:left;">
+Milestones
+</td>
+<td style="text-align:left;">
+Update
+</td>
+<td style="text-align:left;">
+Protocol is more updated than Specific Aims and Clinical Description files located in the Teams environment
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+22-April-2025
+</td>
+<td style="text-align:left;">
+Analysis
+</td>
+<td style="text-align:left;">
+Amendment
+</td>
+<td style="text-align:left;">
+Finalized the phenotypes that are needed for each analysis
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="milestones" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Milestones</h1>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Milestone
+</th>
+<th style="text-align:left;">
+Planned / actual date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Protocol registration
+</td>
+<td style="text-align:left;">
+01-April-2025 / 16-April-2025
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Start of analysis
+</td>
+<td style="text-align:left;">
+17-April-2025
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+End of analysis
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Results presentation
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="rationale-and-background" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Rationale and Background</h1>
+<p>Diabetic retinopathy is the leading cause of vision loss among working-age adults in the U.S. and is expected to affect upwards of 16.0 million patients by 2050.1 Both the American Diabetes Association and Academic of Ophthalmology recommend diabetic retinopathy screening at the time of receiving a type 2 diabetes diagnosis.2,3 However, adherence to guidelines in the real-world are low, ranging from 15% to 77%.4–7 Appropriate screening and timely treatment can reduce the risk of blindness by over 90%.8</p>
+<p>Over the years, there have been major advances in methods available to perform diabetic retinopathy screening.3 Traditional diabetic retinopathy screening involves in-office examinations with a board-certified optometrist or ophthalmologist. More recently, remote screening can be performed with telemedicine.9 Typically, a staff member takes a fundus photo of the retina, and a certified physician (typically ophthalmologist) reads the images remotely. Even more recently, the FDA has approved artificial intelligence (AI) algorithms to independently diagnose diabetic retinopathy without physician oversight.10 Both telemedicine and AI DR screening offer the potential to dramatically improve screening rates by reducing the barriers to screening.11 However, it is unclear if these newer methods of screening are reaching the populations that need them the most, for example rural or minority populations.</p>
+<p>The purpose of this study is to characterize the current landscape of diabetic retinopathy screening and to compare the populations that undergo the 3 types of DR screening (in-office, telemedicine, AI). We will focus on the study period 1/2021 and beyond since the AI screening with its own dedicated current procedural terminology (CPT) code was not available until then. Results from this OHDSI study can inform current usage of DR screening and opportunities for future growth of these vision saving technologies.</p>
+</div>
+<div id="study-objectives" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Study Objectives</h1>
+<ol style="list-style-type: decimal">
+<li><p>Compare the baseline characteristics of patients with type 2 diabetes (both prevalent and incident) who were screened for diabetic retinopathy using one of three modalities: in-office, telemedicine, or AI-based screening.</p></li>
+<li><p>Characterize the annual proportion of patients who undergo diabetic retinopathy screening (in-office, telemedicine, AI) among patients with type 2 diabetes (both prevalent and incident).</p></li>
+<li><p>Compare the time to initial diabetic retinopathy screening between the 3 modalities (in-office, telemedicine, AI) among patients with incident type 2 diabetes.</p></li>
+<li><p>Characterize the sequence of diabetic retinopathy screening (in-office, telemedicine, AI) in the 3 years after type 2 diabetes diagnosis (both prevalent and incident)</p></li>
+</ol>
+</div>
+<div id="research-methods" class="section level1" number="8">
+<h1><span class="header-section-number">8</span> Research Methods</h1>
+<div id="study-designdata-sources" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Study Design/Data Source(s)</h2>
+<p>This will be a retrospective cohort study of databases in the OHDSI Evidence Network. Only databases that pass data diagnostics and contain the relevant concept sets and visit types will be invited to participate.</p>
+</div>
+<div id="study-population" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Study Population</h2>
+<p>Adults (≥18 years) with pre-existing (“prevalent”) and newly diagnosed (“incident”) type 2 diabetes (T2D) diagnosed during the study period from 1/1/2021 to 12/31/2024 will be included for analysis. We will focus on patients with T2D because the diabetic retinopathy (DR) screening guidelines for patients differ for those with type 2 versus type 1 diabetes.3 The study dates were chosen because the current procedural terminology (CPT) code for autonomous artificial intelligence (AI) DR screening was not available and reimbursed by Medicare until 1/2021.10 (Appendix of Cohort Definitions)</p>
+</div>
+<div id="outcome" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> Outcome</h2>
+<p>The outcomes of interest are three forms of DR screening including: 1) in-office, 2) telemedicine, and 3) autonomous AI. We will include 2 variations of the in-office screening phenotype [1A) in-office screening (requires provider specialty), 1B) in-office screening (does not require provider specialty)] to account for the possibility that some databases will not have provider specialty mapped (see Appendix of Cohort Definitions).</p>
+<p>We will include 2 versions of each outcome, ‘all cases’ and ‘first type’, to reflect patients with slightly different outcomes. Patients with ‘all cases’ of a DR screening type represents patients who have ever had, for example AI DR screening. Patients with ‘first type’ of a DR screening type represents patients who had that type of DR screening first, for example someone who had AI DR screening without having received prior in-office or telemedicine screening.</p>
+</div>
+<div id="covariates" class="section level2" number="8.4">
+<h2><span class="header-section-number">8.4</span> Covariates</h2>
+<p>Baseline characteristics include age group and mean, sex, race/ethnicity, ophthalmic characteristics (severity of diabetic retinopathy), other ophthalmic diseases (cataracts, glaucoma), and medical complexity (CCI/DCSI) among others will be examined.</p>
+</div>
+<div id="analysis" class="section level2" number="8.5">
+<h2><span class="header-section-number">8.5</span> Analysis</h2>
+<div id="general" class="section level3 unnumbered">
+<h3>General</h3>
+<p>Various standardized analytics available in the OHDSI Community will be used to conduct this Characterization study.13 The Strategus pipeline will be used to call the following Health Analytics Data-to-Evidence Suite (HADES) packages14: Characterization, CohortIncidence, and TreatmentPatterns. R package dependencies will be versioned using the renv R package. Source code will be versioned using git and stored in the study GitHub repository.</p>
+</div>
+<div id="data-characterization" class="section level3 unnumbered">
+<h3>Data Characterization</h3>
+<p><strong>Cohort Diagnostics</strong></p>
+<p>The CohortDiagnostics package will be executed for all indication and outcome cohorts to evaluate quality of developed phenotypes. This will be an iterative process as outlined by the Phenotype Development group within the OHDSI Community.16 It was through this process that we identified variations in the mapping for provider specialty across databases and made the decision to create two phenotypes for in-office DR screening, one that required a provider specialty of optometry or ophthalmology in addition to a list of procedures, and that one that did not require a provider specialty. (see Appendix of Cohort Definitions)</p>
+<p><strong>Cohort Features</strong></p>
+<p>The Characterization package will be used to extract the features of patients with prevalent and incident T2D (the two Indication cohorts) who were screened using each DR screening method (Outcomes). These features will include demographic data (age group/mean, sex, race, ethnicity), prior conditions/drug exposures/procedures/measurements/devices/observations, and risk scores (e.g., Charlson comorbidity index, DCSI, CHADS2VASC score). We will also extract aggregated features including ‘treatment-requiring DR/diabetic macular edema (DME) (including vitrectomy)’ which will include the standard concepts noted in the Appendix. These features reflect the characteristics of the patients at time of entry into the Indication cohort stratified by whether or not they have an outcome.</p>
+<p>We will specify:</p>
+<ol style="list-style-type: decimal">
+<li>minPriorObservation: will be changed to match the definition in the Indication cohort of 180 days</li>
+</ol>
+<p><strong>Incidence Rates</strong></p>
+<p>The CohortIncidence package will be used to calculate the incidence proportion of patients in each indication cohort who received each type of DR screening. Incidence proportion is defined as the number of distinct people with at least 1 case divided by the number of distinct people who have at least 1 day at risk (persons with cases / persons at risk).17 Time-at-risk will begin with cohort entry into the indication cohort (e.g., first known instance of incident or prevalent T2D) until all time after (this should correspond to an analysis of “intent to treat” rather than “on-treatment”). Since we are interested in reporting the annual incidence of DR screening (e.g., in each year since T2D diagnosis, what proportion of patients receive each type of DR screening), we will have the following time-at-risk options: (start)-(start+365 days), (start+365days)-(start+730days), (start+730days)-(start+1095days), (start+1095days)-(start+1460days).</p>
+<p>The figure below demonstrates how incidence proportion is calculated for 2 sample patients with T2D. Brackets represent the four time-at-risk windows since T2D diagnosis. The stars represent the occurrence of an outcome (DR screening) over time and the black star denotes the presence of any DR screening (either in-office, telemedicine, or AI). The calculation for incidence proportion for each time-at-risk window for each DR screening method is shown in the table.</p>
+<p><img src="PictureDR_.png" />
+<strong>Time-to-Event</strong></p>
+<p>The time from incident T2D to each type of DR screening will be calculated using the Characterization package in HADES. The Characterization package classifies the timing of the outcome in relation to the exposure (in this case a diagnosis of incident T2D) into various types.18 For this analysis, the timing of the outcome after the first target cohort exposure (or “during first”) is of most interest.</p>
+<p>The time-to-event analysis will be performed for both the ‘all types’ and ‘first type’ versions of each DR screening outcome. The time-to-event analysis to the first DR screening in the ‘all types’ version of the outcome reflects, for example, the first time to AI screening even if the patient had received prior in-office screening. The time-to-event analysis to the first DR screening in the ‘first type’ version of the outcome reflects, for example, the first time to AI screening only if the patient did not have prior in-office or telemedicine screening.</p>
+<p><strong>Treatment Pathways</strong></p>
+<p>The TreatmentPatterns package will be used to identify the sequence of DR screening (in-office v telemedicine v AI) in the 3 years after T2D diagnosis among patients with prevalent and incident T2D. Only patients with 3 years of continuous observation will be included in this analysis. (See Appendix of Cohort Definitions)</p>
+<p>A total of 4 sets of TreatmentPatterns analyses will be run to account for the 2 indications (prevalent and incident T2D) and 2 versions of the in-office DR screening outcome. We will employ the following design choices for the analyses.</p>
+<ol style="list-style-type: decimal">
+<li>indexDateOffset: only events starting after the index of the target cohort will be included</li>
+<li>minEraDuration: since outcomes are 1 day events, this will be set to 0</li>
+<li>eraCollapseSize: since outcomes are repeat 1 day events, and we do not want to collapse different events, will set this to 0</li>
+<li>combinationWindow: since these outcomes are discrete, 1 day events, we will not need to consider any combinations. We will set this to 0 since we will not consider treatments within a close proximity as combination treatments.</li>
+<li>minPostCombinationDuration: since we are not considering combinations, this will be set to 0.</li>
+<li>filterTreatment: will be set to Changes. Since we are mostly interested in the proportion of patients who change from one mode of DR screening to the next (for example, patients who were screened by AI and then in-office, but also capture patients who were then re-screened by AI after being seen in-office), we will specify “Changes”.</li>
+<li>maxPathLength: leave at default of 5</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="strengths-and-limitations" class="section level1" number="9">
+<h1><span class="header-section-number">9</span> Strengths and Limitations</h1>
+<p>When complete, this study will provide one of the largest characterizations of patients who have received three potential forms of DR screening. Its limitations are its retrospective nature, and potential measurement errors in the capture of in-office DR screening.</p>
+</div>
+<div id="protection-of-human-subjects" class="section level1" number="10">
+<h1><span class="header-section-number">10</span> Protection of Human Subjects</h1>
+<p>Each participating institution will seek IRB approval for this study as dictated by local governance.</p>
+</div>
+<div id="plans-for-disseminating-and-communicating-study-results" class="section level1" number="11">
+<h1><span class="header-section-number">11</span> Plans for Disseminating and Communicating Study Results</h1>
+<p>The results will be shared and discussed among the study participants and broader OHDSI community during the weekly Tuesday community calls. This work will be presented at conferences (OHDSI Global Symposium and/or ARVO) and published as a manuscript.</p>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<ol style="list-style-type: decimal">
+<li>Saaddine JB, Honeycutt AA, Narayan KMV, Zhang X, Klein R, Boyle JP. Projection of diabetic retinopathy and other major eye diseases among people with diabetes mellitus: United States, 2005-2050. Arch Ophthalmol. 2008;126(12):1740-1747.</li>
+<li>ElSayed NA, Aleppo G, Aroda VR, Bannuru RR, Brown FM, Bruemmer D, Collins BS, Gibbons CH, Giurini JM, Hilliard ME, Isaacs D, Johnson EL, Kahan S, Khunti K, Leon J, Lyons SK, Perry ML, Prahalad P, Pratley RE, Seley JJ, Stanton RC, Sun JK, Gabbay RA, on behalf of the American Diabetes Association. 12. Retinopathy, Neuropathy, and Foot Care: Standards of Care in Diabetes-2023. Diabetes Care. 2023;46(Suppl 1):S203-S215.</li>
+<li>Flaxel CJ, Adelman RA, Bailey ST, Fawzi A, Lim JI, Vemulakonda GA, Ying GS. Diabetic Retinopathy Preferred Practice Pattern®. Ophthalmology. 2020;127(1):P66-P145.</li>
+<li>Sloan FA, Yashkin AP, Chen Y. Gaps in receipt of regular eye examinations among medicare beneficiaries diagnosed with diabetes or chronic eye diseases. Ophthalmology. 2014;121(12):2452-2460.</li>
+<li>Lee PP, Feldman ZW, Ostermann J, Brown DS, Sloan FA. Longitudinal prevalence of major eye diseases. Arch Ophthalmol. 2003;121(9):1303-1310.</li>
+<li>Benoit SR, Swenor B, Geiss LS, Gregg EW, Saaddine JB. Eye Care Utilization Among Insured People With Diabetes in the U.S., 2010-2014. Diabetes Care. 2019;42(3):427-433.</li>
+<li>Hatef E, Vanderver BG, Fagan P, Albert M, Alexander M. Annual diabetic eye examinations in a managed care Medicaid population. Am J Manag Care. 2015;21(5):e297-e302.</li>
+<li>Ferris FL 3rd. Results of 20 years of research on the treatment of diabetic retinopathy. Prev Med. 1994;23(5):740-742.</li>
+<li>Chen JS, Lin MC, Yiu G, Thorne C, Kulasa K, Stewart J, Nudleman E, Freeby M, Han MA, Baxter SL. Barriers to Implementation of Teleretinal Diabetic Retinopathy Screening Programs Across the University of California. Telemed J E Health. 2023;29(12):1810-1818.</li>
+<li>Shah SA, Sokol JT, Wai KM, Rahimy E, Myung D, Mruthyunjaya P, Parikh R. Use of Artificial Intelligence-Based Detection of Diabetic Retinopathy in the US. JAMA Ophthalmol. 2024;142(12):1171-1173.</li>
+<li>Huang JJ, Channa R, Wolf RM, Dong Y, Liang M, Wang J, Abramoff MD, Liu TYA. Autonomous artificial intelligence for diabetic eye disease increases access and health equity in underserved populations. NPJ Digit Med. 2024;7(1):196.</li>
+<li>[No title]. Accessed April 16, 2025. <a href="https://www.ohdsi.org/wp-content/uploads/2023/10/103-Blacketer-BriefReport.pdf" class="uri">https://www.ohdsi.org/wp-content/uploads/2023/10/103-Blacketer-BriefReport.pdf</a></li>
+<li>Observational Health Data Sciences, Informatics. Chapter 11 Characterization. January 11, 2021. Accessed April 16, 2025. <a href="https://ohdsi.github.io/TheBookOfOhdsi/" class="uri">https://ohdsi.github.io/TheBookOfOhdsi/</a></li>
+<li>Schuemie M, Reps J, Black A, Defalco F, Evans L, Fridgeirsson E, Gilbert JP, Knoll C, Lavallee M, Rao GA, Rijnbeek P, Sadowski K, Sena A, Swerdel J, Williams RD, Suchard M. Health-Analytics Data to Evidence Suite (HADES): Open-Source Software for Observational Research. Stud Health Technol Inform. 2024;310:966-970.</li>
+<li>GitHub - ohdsi-studies/Gde2025DiabeticRetinopathyScreening. GitHub. Accessed April 16, 2025. <a href="https://github.com/ohdsi-studies/Gde2025DiabeticRetinopathyScreening" class="uri">https://github.com/ohdsi-studies/Gde2025DiabeticRetinopathyScreening</a></li>
+<li>Rao GA, Shoaibi A, Makadia R, Hardin J, Swerdel J, Weaver J, Voss EA, Conover MM, Fortin S, Sena AG, Knoll C, Hughes N, Gilbert JP, Blacketer C, Andryc A, DeFalco F, Molinaro A, Reps J, Schuemie MJ, Ryan PB. CohortDiagnostics: Phenotype evaluation across a network of observational data sources using population-level characterization. PLoS One. 2025;20(1):e0310634.</li>
+<li>Knoll C. CohortIncidence Method Documentation. Accessed April 17, 2025. <a href="https://ohdsi.github.io/CohortIncidence/articles/cohortincidence-method-documentation.html" class="uri">https://ohdsi.github.io/CohortIncidence/articles/cohortincidence-method-documentation.html</a></li>
+<li>Reps J. Characterization Package Specification. Accessed April 22, 2025. <a href="https://ohdsi.github.io/Characterization/articles/Specification.html#time-to-event" class="uri">https://ohdsi.github.io/Characterization/articles/Specification.html#time-to-event</a></li>
+<li>SemaglutideNaion/inst/cohorts/17788_Treatment-requiring Diabetic Retinopathy or Macular Edema including vitrectomy.json at master · ohdsi-studies/SemaglutideNaion. GitHub. Accessed April 16, 2025. <a href="https://github.com/ohdsi-studies/SemaglutideNaion/blob/master/inst/cohorts/17788_Treatment-requiring%20Diabetic%20Retinopathy%20or%20Macular%20Edema%20including%20vitrectomy.json" class="uri">https://github.com/ohdsi-studies/SemaglutideNaion/blob/master/inst/cohorts/17788_Treatment-requiring%20Diabetic%20Retinopathy%20or%20Macular%20Edema%20including%20vitrectomy.json</a></li>
+</ol>
+<div id="refs">
+
+</div>
+</div>
+<div id="appendix-appendix" class="section level1 unnumbered">
+<h1>Appendix</h1>
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;border-bottom: 0;">
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;background-color: rgba(248, 248, 248, 255) !important;">
+Phenotype Name
+</th>
+<th style="text-align:left;font-weight: bold;background-color: rgba(248, 248, 248, 255) !important;">
+Definition
+</th>
+<th style="text-align:left;font-weight: bold;background-color: rgba(248, 248, 248, 255) !important;">
+Type
+</th>
+<th style="text-align:left;font-weight: bold;background-color: rgba(248, 248, 248, 255) !important;">
+R Package Used For
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 20%; font-weight: bold;">
+Newly diagnosed T2DM
+</td>
+<td style="text-align:left;width: 55%; ">
+Index Event: (earliest event)<br>• Condition of T2DM<br>• Med (including insulin)<br>• A1c between 6.5-30% or 48-99 millimole per mole<br>Inclusion Criteria:<br>• No T1DM prior to T2DM diagnosis<br>• No secondary prior to T2DM diagnosis<br>• At least 1 T2DM on or within 365 days of index<br>• 180 day look back period<br>• ≥18 years<br>End of continuous observation
+</td>
+<td style="text-align:left;width: 5%; font-weight: bold;">
+I
+</td>
+<td style="text-align:left;width: 20%; ">
+Characterization, CohortIncidence
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20%; font-weight: bold;">
+Newly diagnosed T2DM (3 years continuous observation)
+</td>
+<td style="text-align:left;width: 55%; ">
+Same as above, but also require 3 year observation period after index date
+</td>
+<td style="text-align:left;width: 5%; font-weight: bold;">
+I
+</td>
+<td style="text-align:left;width: 20%; ">
+TreatmentPatterns
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20%; font-weight: bold;">
+Prevalent T2DM
+</td>
+<td style="text-align:left;width: 55%; ">
+Index Event: (all events)<br>• Condition of T2DM<br>• Med (including insulin)<br>• A1c between 6.5-30% or 48-99 millimole per mole<br>Inclusion Criteria:<br>• No T1DM prior to T2DM diagnosis<br>• No secondary prior to T2DM diagnosis<br>• At least 1 T2DM on or within 365 days of index<br>• ≥18 years<br>End of continuous observation
+</td>
+<td style="text-align:left;width: 5%; font-weight: bold;">
+I
+</td>
+<td style="text-align:left;width: 20%; ">
+Characterization, CohortIncidence
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20%; font-weight: bold;">
+Prevalent T2DM (3 years continuous observation)
+</td>
+<td style="text-align:left;width: 55%; ">
+Same as above, but also require 3 year observation period after index date
+</td>
+<td style="text-align:left;width: 5%; font-weight: bold;">
+I
+</td>
+<td style="text-align:left;width: 20%; ">
+TreatmentPatterns
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20%; font-weight: bold;">
+DR Screening in-office
+</td>
+<td style="text-align:left;width: 55%; ">
+Index Event: (all events)<br>• Outpatient Visit<br>Inclusion Criteria: (all events)<br>• eye screening and measurements<br>• specialist of provider optometry or ophthalmology<br>End date: 0 days
+</td>
+<td style="text-align:left;width: 5%; font-weight: bold;">
+O
+</td>
+<td style="text-align:left;width: 20%; ">
+Characterization, CohortIncidence, TreatmentPatterns
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20%; font-weight: bold;">
+DR Screening in-office (first type)
+</td>
+<td style="text-align:left;width: 55%; ">
+Same as above<br>• Excludes prior telemedicine or AI
+</td>
+<td style="text-align:left;width: 5%; font-weight: bold;">
+O
+</td>
+<td style="text-align:left;width: 20%; ">
+Characterization, CohortIncidence
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20%; font-weight: bold;">
+DR Screening in-office (no specialty)
+</td>
+<td style="text-align:left;width: 55%; ">
+Index Event: (all events)<br>• Outpatient Visit<br>Inclusion Criteria: (all events)<br>• eye screening and measurements<br>End date: 0 days
+</td>
+<td style="text-align:left;width: 5%; font-weight: bold;">
+O
+</td>
+<td style="text-align:left;width: 20%; ">
+Characterization, CohortIncidence, TreatmentPatterns
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20%; font-weight: bold;">
+DR Screening in-office (no specialty) (first type)
+</td>
+<td style="text-align:left;width: 55%; ">
+Same as above<br>• Excludes prior telemedicine or AI
+</td>
+<td style="text-align:left;width: 5%; font-weight: bold;">
+O
+</td>
+<td style="text-align:left;width: 20%; ">
+Characterization, CohortIncidence
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20%; font-weight: bold;">
+DR Screening telemedicine
+</td>
+<td style="text-align:left;width: 55%; ">
+Index Event: (all events)<br>• Procedure Telemedicine (CPT 92227 and 92228)<br>Inclusion Criteria: (all events)<br>End date: 0 days
+</td>
+<td style="text-align:left;width: 5%; font-weight: bold;">
+O
+</td>
+<td style="text-align:left;width: 20%; ">
+Characterization, CohortIncidence, TreatmentPatterns
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20%; font-weight: bold;">
+DR Screening telemedicine (first type, excludes in-office with specialty)
+</td>
+<td style="text-align:left;width: 55%; ">
+Same as above<br>• Excludes prior in-office (with provider specialty) or AI
+</td>
+<td style="text-align:left;width: 5%; font-weight: bold;">
+O
+</td>
+<td style="text-align:left;width: 20%; ">
+Characterization, CohortIncidence
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20%; font-weight: bold;">
+DR Screening telemedicine (first type, excludes in-office without specialty)
+</td>
+<td style="text-align:left;width: 55%; ">
+Same as above<br>• Excludes prior in-office (without provider specialty) or AI
+</td>
+<td style="text-align:left;width: 5%; font-weight: bold;">
+O
+</td>
+<td style="text-align:left;width: 20%; ">
+Characterization, CohortIncidence
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20%; font-weight: bold;">
+DR Screening AI
+</td>
+<td style="text-align:left;width: 55%; ">
+Index Event: (all events)<br>• Procedure Telemedicine (CPT 92229)<br>Inclusion Criteria: (all events)<br>End date: 0 days
+</td>
+<td style="text-align:left;width: 5%; font-weight: bold;">
+O
+</td>
+<td style="text-align:left;width: 20%; ">
+Characterization, CohortIncidence, TreatmentPatterns
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20%; font-weight: bold;">
+DR Screening AI (first type, excludes in-office with specialty)
+</td>
+<td style="text-align:left;width: 55%; ">
+Same as above<br>• Excludes prior in-office (with provider specialty) or telemedicine
+</td>
+<td style="text-align:left;width: 5%; font-weight: bold;">
+O
+</td>
+<td style="text-align:left;width: 20%; ">
+Characterization, CohortIncidence
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20%; font-weight: bold;">
+DR Screening AI (first type, excludes in-office without specialty)
+</td>
+<td style="text-align:left;width: 55%; ">
+Same as above<br>• Excludes prior in-office (without provider specialty) or telemedicine
+</td>
+<td style="text-align:left;width: 5%; font-weight: bold;">
+O
+</td>
+<td style="text-align:left;width: 20%; ">
+Characterization, CohortIncidence
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20%; font-weight: bold;">
+DR Screening any
+</td>
+<td style="text-align:left;width: 55%; ">
+Any type of DR screening (uses the in-office definition that requires a provider specialty)
+</td>
+<td style="text-align:left;width: 5%; font-weight: bold;">
+O
+</td>
+<td style="text-align:left;width: 20%; ">
+CohortIncidence
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20%; font-weight: bold;">
+DR Screening any (no specialty)
+</td>
+<td style="text-align:left;width: 55%; ">
+Any type of DR screening (uses the in-office definition that does not require a provider specialty)
+</td>
+<td style="text-align:left;width: 5%; font-weight: bold;">
+O
+</td>
+<td style="text-align:left;width: 20%; ">
+CohortIncidence
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<sup>*</sup> I = Indication, O = Outcome
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
