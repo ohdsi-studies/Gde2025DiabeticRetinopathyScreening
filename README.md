@@ -1,4 +1,4 @@
-cladfdsfGDE2025 Diabetic Retinopathy Screening
+GDE2025 Diabetic Retinopathy Screening
 =================
 
 
