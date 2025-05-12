@@ -1,0 +1,30 @@
+/* Hide title in navbar */
+.navbar-header .navbar-brand {
+  display: none !important;
+}
+
+/* Hide "About" in navbar */
+.navbar-nav li:nth-child(2) {
+  display: none !important;
+}
+
+/* Style for OHDSI logo */
+.ohdsi-logo-container {
+  text-align: center;
+  padding: 15px 0;
+  background-color: white;
+  margin-top: 50px; /* Space below navbar */
+  border-bottom: 1px solid #ddd;
+}
+
+.ohdsi-logo-container img {
+  max-width: 250px;
+}
+
+/* Style for the TOC headers */
+.list-group-item.active, 
+.list-group-item.active:focus, 
+.list-group-item.active:hover {
+  background-color: #2c6aa0;
+  border-color: #2c6aa0;
+}
