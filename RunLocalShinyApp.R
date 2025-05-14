@@ -9,6 +9,7 @@ source("env.R")
 # Leave commented to use SQLite.
 # source("envResults.R")  
 
+# databaseName <- "JH_DR_Screening"
 
 # Enter a location to store the SQLite database
 sqliteFileName <- "/Users/erikwestlund/code/ohdsi-dr-screening/results/results.sqlite"

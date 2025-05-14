@@ -15,3 +15,4 @@ atlas_id,cohort_id,cohort_name,logic_description,generate_stats
 1792938,130,"DR Screening, AI",NA,TRUE
 1792930,131,"DR Screening, AI (First Type, Excludes In Office, With Specialty)",NA,TRUE
 1792931,132,"DR Screening, AI (First Type, Excludes In Office, Without Specialty)",NA,TRUE
+1793230,200,Treatment-requiring Diabetic Retinopathy or Macular Edema including vitrectomy,NA,TRUE

@@ -33,9 +33,9 @@ if (any(duplicated(cohortDefinitionSetLimited$cohortId))) {
 }
 
 # Create some data frames to hold the cohorts we'll use in each analysis ---------------
-# Outcomes: The outcomes for this study take values >= 100
+# Outcomes: The outcomes for this study take values >= 100 and < 200
 oList <- cohortDefinitionSetLimited |>
-  filter(cohortId >= 100) |>
+  filter(cohortId >= 100 & cohortId < 200) |>
   mutate(outcomeCohortId = cohortId, outcomeCohortName = cohortName) |>
   select(outcomeCohortId, outcomeCohortName) |> 
   mutate(cleanWindow = 0)
@@ -56,7 +56,7 @@ tpTargetCohorts <- cohortDefinitionSetLimited |>
   mutate(
     type = case_when(
       cohortId < 100 ~ "target",
-      cohortId >= 100 ~ "event"
+      cohortId >= 100 & cohortId < 200 ~ "event"
     )
   ) |>
   select(

@@ -31,9 +31,9 @@ if (any(duplicated(cohortDefinitionSet$cohortId))) {
 }
 
 # Create some data frames to hold the cohorts we'll use in each analysis ---------------
-# Outcomes: The outcomes for this study take values >= 100
+# Outcomes: The outcomes for this study take values >= 100 and < 200
 oList <- cohortDefinitionSet |>
-  filter(cohortId >= 100) |>
+  filter(cohortId >= 100 & cohortId < 200) |>
   mutate(outcomeCohortId = cohortId, outcomeCohortName = cohortName) |>
   select(outcomeCohortId, outcomeCohortName) |> 
   mutate(cleanWindow = 0)
@@ -64,7 +64,25 @@ cohortDiagnosticsModuleSpecifications <- cdModuleSettingsCreator$createModuleSpe
 )
 
 # CharacterizationModule Settings ---------------------------------------------
+
 cModuleSettingsCreator <- CharacterizationModule$new()
+
+
+# Custom covariates
+customCovariateCohorts <- tibble(
+  cohortId = 200,
+  cohortName = "Treatment-requiring Diabetic Retinopathy or Macular Edema including vitrectomy"
+)
+
+customCovariateSettings <- FeatureExtraction::createCohortBasedCovariateSettings(
+  analysisId = 999,
+  covariateCohorts = customCovariateCohorts,
+  valueType = "binary",
+  startDay = -365,
+  endDay = 0,
+)
+
+covariateSettings <- FeatureExtraction::createDefaultCovariateSettings()
 characterizationModuleSpecifications <- cModuleSettingsCreator$createModuleSpecifications(
   targetIds = cohortDefinitionSet$cohortId, # NOTE: This is all T/C/I/O
   outcomeIds = oList$outcomeCohortId,
@@ -77,7 +95,7 @@ characterizationModuleSpecifications <- cModuleSettingsCreator$createModuleSpeci
   endAnchor = timeAtRisks$endAnchor,
   minCharacterizationMean = .01,
   outcomeWashoutDays = rep(0, nrow(oList)),  # Confirm
-  covariateSettings = FeatureExtraction::createDefaultCovariateSettings()
+  covariateSettings = list(covariateSettings, customCovariateSettings)
 )
 
 
@@ -158,7 +176,7 @@ tpTargetCohorts <- cohortDefinitionSet |>
   mutate(
     type = case_when(
       cohortId < 100 ~ "target",
-      cohortId >= 100 ~ "event"
+      cohortId >= 100 & cohortId < 200 ~ "event"
     )
   ) |>
   select(

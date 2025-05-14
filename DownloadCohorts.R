@@ -2,6 +2,11 @@ library(dplyr)
 
 baseUrl <- "https://atlas-demo.ohdsi.org/WebAPI"
 
+# Naming scheme:
+# < 100 = Indication cohorts
+# >= 100 & < 200 = Outcomes
+# >= 200 "Utility" cohorts for aggregated covariates, etc.
+
 cohortDefinitionSet <- ROhdsiWebApi::exportCohortDefinitionSet(
   baseUrl = baseUrl,
   cohortIds = c(
@@ -20,7 +25,8 @@ cohortDefinitionSet <- ROhdsiWebApi::exportCohortDefinitionSet(
     1792937,
     1792938,
     1792930,
-    1792931
+    1792931,
+    1793230
   ),
   generateStats = TRUE
 )
@@ -44,6 +50,7 @@ cohortDefinitionSet <- cohortDefinitionSet |>
       cohortId == 1792938 ~ "DR Screening, AI",
       cohortId == 1792930 ~ "DR Screening, AI (First Type, Excludes In Office, With Specialty)",
       cohortId == 1792931 ~ "DR Screening, AI (First Type, Excludes In Office, Without Specialty)",
+      cohortId == 1793230 ~ "Treatment-requiring Diabetic Retinopathy or Macular Edema including vitrectomy",
       TRUE ~ cohortName
     ),
     cohortId = case_when(
@@ -63,6 +70,7 @@ cohortDefinitionSet <- cohortDefinitionSet |>
       cohortId == 1792938 ~ 130,
       cohortId == 1792930 ~ 131,
       cohortId == 1792931 ~ 132,
+      cohortId == 1793230 ~ 200,
       TRUE ~ cohortId
     )
   )
@@ -77,7 +85,7 @@ CohortGenerator::saveCohortDefinitionSet(
 # Temp: Limited set for testing
 cohortDefinitionSetLimited <- cohortDefinitionSet |> 
 filter(
-  cohortId %in% c(2, 11) | cohortId >= 100
+  cohortId %in% c(2, 11) | cohortId >= 100 & cohortId < 200
 )
 
 CohortGenerator::saveCohortDefinitionSet(
