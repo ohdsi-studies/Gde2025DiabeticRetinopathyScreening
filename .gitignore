@@ -1,5 +1,6 @@
 # Env
 env.R
+envResults.R
 
 # Error reports
 errorReport*
