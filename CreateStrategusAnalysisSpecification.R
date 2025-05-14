@@ -76,7 +76,8 @@ characterizationModuleSpecifications <- cModuleSettingsCreator$createModuleSpeci
   riskWindowEnd = timeAtRisks$riskWindowEnd, 
   endAnchor = timeAtRisks$endAnchor,
   minCharacterizationMean = .01,
-  outcomeWashoutDays = rep(0, nrow(oList))  # Confirm
+  outcomeWashoutDays = rep(0, nrow(oList)),  # Confirm
+  covariateSettings = FeatureExtraction::createDefaultCovariateSettings()
 )
 
 
