@@ -4,14 +4,14 @@ library(Strategus)
 # Time-at-risks (TARs) for the outcomes of interest in your study
 timeAtRisks <- tibble(
   label = c("Year 1", "Year 2", "Year 3", "Year 4"),
-  riskWindowStart  = c(0, 365, 730, 1095),   # CONFIRM start at 0
+  riskWindowStart = c(0, 365, 730, 1095), # CONFIRM start at 0
   startAnchor = c("cohort start"),
-  riskWindowEnd  = c(365, 730, 1095, 1460),
+  riskWindowEnd = c(365, 730, 1095, 1460),
   endAnchor = c("cohort end")
 )
 
-studyStartDate <- '20210101' #YYYYMMDD
-studyEndDate <- '20241231'   #YYYYMMDD
+studyStartDate <- "20210101" # YYYYMMDD
+studyEndDate <- "20241231" # YYYYMMDD
 
 # Some of the settings require study dates with hyphens
 studyStartDateWithHyphens <- gsub("(\\d{4})(\\d{2})(\\d{2})", "\\1-\\2-\\3", studyStartDate)
@@ -35,9 +35,9 @@ if (any(duplicated(cohortDefinitionSet$cohortId))) {
 oList <- cohortDefinitionSet |>
   filter(cohortId >= 100 & cohortId < 200) |>
   mutate(outcomeCohortId = cohortId, outcomeCohortName = cohortName) |>
-  select(outcomeCohortId, outcomeCohortName) |> 
+  select(outcomeCohortId, outcomeCohortName) |>
   mutate(cleanWindow = 0)
-  
+
 
 # CohortGeneratorModule --------------------------------------------------------
 cgModuleSettingsCreator <- CohortGeneratorModule$new()
@@ -86,15 +86,15 @@ covariateSettings <- FeatureExtraction::createDefaultCovariateSettings()
 characterizationModuleSpecifications <- cModuleSettingsCreator$createModuleSpecifications(
   targetIds = cohortDefinitionSet$cohortId, # NOTE: This is all T/C/I/O
   outcomeIds = oList$outcomeCohortId,
-  minPriorObservation = 180,  # Confirm
-  dechallengeStopInterval = 0,  # Confirm
-  dechallengeEvaluationWindow = 0,  # Confirm
-  riskWindowStart = timeAtRisks$riskWindowStart, 
-  startAnchor = timeAtRisks$startAnchor, 
-  riskWindowEnd = timeAtRisks$riskWindowEnd, 
+  minPriorObservation = 180,
+  dechallengeStopInterval = 0,
+  dechallengeEvaluationWindow = 0,
+  riskWindowStart = timeAtRisks$riskWindowStart,
+  startAnchor = timeAtRisks$startAnchor,
+  riskWindowEnd = timeAtRisks$riskWindowEnd,
   endAnchor = timeAtRisks$endAnchor,
-  minCharacterizationMean = .01,
-  outcomeWashoutDays = rep(0, nrow(oList)),  # Confirm
+  minCharacterizationMean = 0,
+  outcomeWashoutDays = rep(0, nrow(oList)),
   covariateSettings = list(covariateSettings, customCovariateSettings)
 )
 
@@ -120,9 +120,9 @@ outcomeList <- lapply(
   seq_len(nrow(oList)),
   function(i) {
     CohortIncidence::createOutcomeDef(
-      id = i, 
-      name = cohortDefinitionSet$cohortName[cohortDefinitionSet$cohortId == oList$outcomeCohortId[i]], 
-      cohortId = oList$outcomeCohortId[i], 
+      id = i,
+      name = cohortDefinitionSet$cohortName[cohortDefinitionSet$cohortId == oList$outcomeCohortId[i]],
+      cohortId = oList$outcomeCohortId[i],
       cleanWindow = oList$cleanWindow[i]
     )
   }
@@ -131,9 +131,9 @@ outcomeList <- lapply(
 tars <- list()
 for (i in seq_len(nrow(timeAtRisks))) {
   tars[[i]] <- CohortIncidence::createTimeAtRiskDef(
-    id = i, 
-    startWith = gsub("cohort ", "", timeAtRisks$startAnchor[i]), 
-    endWith = gsub("cohort ", "", timeAtRisks$endAnchor[i]), 
+    id = i,
+    startWith = gsub("cohort ", "", timeAtRisks$startAnchor[i]),
+    endWith = gsub("cohort ", "", timeAtRisks$endAnchor[i]),
     startOffset = timeAtRisks$riskWindowStart[i],
     endOffset = timeAtRisks$riskWindowEnd[i]
   )
@@ -183,7 +183,7 @@ tpTargetCohorts <- cohortDefinitionSet |>
     cohortId,
     cohortName,
     type
-  ) 
+  )
 
 treatmentPatternsModuleSpecifications <- tpSettingsCreator$createModuleSpecifications(
   cohorts = tpTargetCohorts,
@@ -201,14 +201,14 @@ treatmentPatternsModuleSpecifications <- tpSettingsCreator$createModuleSpecifica
 
 # Create the analysis specifications ------------------------------------------
 analysisSpecifications <- Strategus::createEmptyAnalysisSpecificiations() |>
-  Strategus::addSharedResources(cohortDefinitionShared) |> 
+  Strategus::addSharedResources(cohortDefinitionShared) |>
   Strategus::addModuleSpecifications(cohortGeneratorModuleSpecifications) |>
   Strategus::addModuleSpecifications(cohortDiagnosticsModuleSpecifications) |>
   Strategus::addModuleSpecifications(characterizationModuleSpecifications) |>
   Strategus::addModuleSpecifications(cohortIncidenceModuleSpecifications) #|>
-  #Strategus::addModuleSpecifications(treatmentPatternsModuleSpecifications)
+# Strategus::addModuleSpecifications(treatmentPatternsModuleSpecifications)
 
 ParallelLogger::saveSettingsToJson(
-  analysisSpecifications, 
+  analysisSpecifications,
   file.path("inst", "drScreeningStudyAnalysisSpecification.json")
 )

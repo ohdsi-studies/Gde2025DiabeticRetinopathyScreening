@@ -559,7 +559,7 @@
           ],
           "attr_class": "characterizationSettings"
         },
-        "minCharacterizationMean": 0.01
+        "minCharacterizationMean": 0
       },
       "attr_class": ["ModuleSpecifications", "CharacterizationModuleSpecifications"]
     },
