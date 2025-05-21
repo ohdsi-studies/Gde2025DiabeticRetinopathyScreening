@@ -14,10 +14,10 @@ cohortDefinitionSet <- ROhdsiWebApi::exportCohortDefinitionSet(
     1792942,
     1792945,
     1792944,
-    1793022,  # Updated DR Screening (Any)
-    1793027,  # Updated DR Screening (No Specialty)
-    1792940,
-    1792939,
+    1793022,
+    1793027,
+    1792940,  # Awaiting fix
+    1792939,  # Awaiting fix
     1792934,
     1792935,
     1792941,
