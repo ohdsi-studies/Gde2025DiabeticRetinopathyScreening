@@ -5,6 +5,10 @@
 #
 # ############################################################################ #
 
+# Environment-related Tweaks----------------------------------------------------
+
+runInclusionStats <- TRUE
+
 # Database Drivers ----------------------------------------------------
 # Follow the directions here: https://ohdsi.github.io/DatabaseConnector/articles/Connecting.html
 # to download your drivers. Then note the location of this directory.
