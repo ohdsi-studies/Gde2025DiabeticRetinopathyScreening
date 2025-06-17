@@ -124,20 +124,20 @@ invisible({
 
 # If run inclusion stats is off, we can patch the JSON file before loading it. This is to support
 # environments where these are causing failures.
+if(!exists("runInclusionStats")) {
+  runInclusionStats <- TRUE
+}
+
 if(!runInclusionStats) {
-  # Read the file as text
   jsonText <- readLines("inst/drScreeningStudyAnalysisSpecification.json")
   
-  # Replace the exact line
   jsonText <- gsub('"runInclusionStatistics": true,', 
                    '"runInclusionStatistics": false,', 
                    jsonText, 
                    fixed = TRUE)
   
-  # Create a temporary file
   tempJsonPath <- tempfile(pattern = "drScreeningStudy", fileext = ".json")
   
-  # Write the modified text
   writeLines(jsonText, tempJsonPath)
   
   # Load settings from the modified JSON
@@ -145,7 +145,6 @@ if(!runInclusionStats) {
     fileName = tempJsonPath
   )
   
-  # Clean up
   if(file.exists(tempJsonPath)) {
     file.remove(tempJsonPath)
   }
