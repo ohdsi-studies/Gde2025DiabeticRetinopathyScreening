@@ -45,6 +45,9 @@ if(!file.exists("env.R")) {
 # Run the code below to execute the study
 ################################################################################
 
+# Logging settings
+options(loggerSettings = ParallelLogger:::getDefaultLoggerSettings())
+
 # Read in settings
 if(!file.exists("env.R")) {
   stop("Please copy env.example.R to env.R and edit the file to set your environment variables.")
@@ -119,9 +122,38 @@ invisible({
 
 # Execute the study
 
-analysisSpecifications <- ParallelLogger::loadSettingsFromJson(
-  fileName = "inst/drScreeningStudyAnalysisSpecification.json"
-)
+# If run inclusion stats is off, we can patch the JSON file before loading it. This is to support
+# environments where these are causing failures.
+if(!runInclusionStats) {
+  # Read the file as text
+  jsonText <- readLines("inst/drScreeningStudyAnalysisSpecification.json")
+  
+  # Replace the exact line
+  jsonText <- gsub('"runInclusionStatistics": true,', 
+                   '"runInclusionStatistics": false,', 
+                   jsonText, 
+                   fixed = TRUE)
+  
+  # Create a temporary file
+  tempJsonPath <- tempfile(pattern = "drScreeningStudy", fileext = ".json")
+  
+  # Write the modified text
+  writeLines(jsonText, tempJsonPath)
+  
+  # Load settings from the modified JSON
+  analysisSpecifications <- ParallelLogger::loadSettingsFromJson(
+    fileName = tempJsonPath
+  )
+  
+  # Clean up
+  if(file.exists(tempJsonPath)) {
+    file.remove(tempJsonPath)
+  }
+} else {
+  analysisSpecifications <- ParallelLogger::loadSettingsFromJson(
+    fileName = "inst/drScreeningStudyAnalysisSpecification.json"
+  )
+}
 
 executionSettings <- Strategus::createCdmExecutionSettings(
   workDatabaseSchema = workDatabaseSchema,
