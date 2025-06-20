@@ -5,10 +5,10 @@ library(Strategus)
 # Uncomment after testing
 cohortsToKeep <- c(
   2,   # Newly Diagnosed T2DM (3 Years Continuous Observation): target
-  #11,  # Prevalent T2DM (3 Years Continuous Observation): target
-  110#, # DR Screening, In Office
-  #120, # DR Screening, Telemedicine
-  #130  # DR Screening, AI
+  11,  # Prevalent T2DM (3 Years Continuous Observation): target
+  110, # DR Screening, In Office
+  120, # DR Screening, Telemedicine
+  130  # DR Screening, AI
 )
 
 # Time-at-risks (TARs) for the outcomes of interest in your study
