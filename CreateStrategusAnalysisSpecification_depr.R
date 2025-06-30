@@ -4,7 +4,7 @@ library(Strategus)
 # Time-at-risks (TARs) for the outcomes of interest in your study
 timeAtRisks <- tibble(
   label = c("Year 1", "Year 2", "Year 3", "Year 4"),
-  riskWindowStart = c(0, 365, 730, 1095),
+  riskWindowStart = c(0, 365, 730, 1095), # CONFIRM start at 0
   startAnchor = c("cohort start"),
   riskWindowEnd = c(365, 730, 1095, 1460),
   endAnchor = c("cohort end")
@@ -47,7 +47,7 @@ cohortGeneratorModuleSpecifications <- cgModuleSettingsCreator$createModuleSpeci
   generateStats = TRUE
 )
 
-# CohortDiagnosticsModule Settings ---------------------------------------------
+# CohortDiagnoticsModule Settings ---------------------------------------------
 cdModuleSettingsCreator <- CohortDiagnosticsModule$new()
 cohortDiagnosticsModuleSpecifications <- cdModuleSettingsCreator$createModuleSpecifications(
   cohortIds = cohortDefinitionSet$cohortId,
@@ -167,9 +167,37 @@ cohortIncidenceModuleSpecifications <- ciModuleSettingsCreator$createModuleSpeci
   irDesign = irDesign$toList()
 )
 
-# NOTE: TreatmentPatterns module has been moved to a separate analysis
-# See CreateStrategusAnalysisSpecificationTreatmentPatterns.R for the 
-# properly configured TreatmentPatterns analyses (4 separate versions)
+
+# TreamentPatternsModule Settings ---------------------------------
+tpSettingsCreator <- Strategus::TreatmentPatternsModule$new()
+
+# We need four specifications for the treatment patterns module, one for each indication cohort.
+tpTargetCohorts <- cohortDefinitionSet |>
+  mutate(
+    type = case_when(
+      cohortId < 100 ~ "target",
+      cohortId >= 100 & cohortId < 200 ~ "event"
+    )
+  ) |>
+  select(
+    cohortId,
+    cohortName,
+    type
+  )
+
+treatmentPatternsModuleSpecifications <- tpSettingsCreator$createModuleSpecifications(
+  cohorts = tpTargetCohorts,
+  includeTreatments = "startDate",
+  indexDateOffset = 0,
+  minEraDuration = 0,
+  splitEventCohorts = NULL,
+  splitTime = NULL,
+  eraCollapseSize = 0,
+  combinationWindow = 0,
+  minPostCombinationDuration = 0,
+  filterTreatments = "Changes",
+  maxPathLength = 5
+)
 
 # Create the analysis specifications ------------------------------------------
 analysisSpecifications <- Strategus::createEmptyAnalysisSpecificiations() |>
@@ -177,7 +205,8 @@ analysisSpecifications <- Strategus::createEmptyAnalysisSpecificiations() |>
   Strategus::addModuleSpecifications(cohortGeneratorModuleSpecifications) |>
   Strategus::addModuleSpecifications(cohortDiagnosticsModuleSpecifications) |>
   Strategus::addModuleSpecifications(characterizationModuleSpecifications) |>
-  Strategus::addModuleSpecifications(cohortIncidenceModuleSpecifications)
+  Strategus::addModuleSpecifications(cohortIncidenceModuleSpecifications) #|>
+# Strategus::addModuleSpecifications(treatmentPatternsModuleSpecifications)
 
 ParallelLogger::saveSettingsToJson(
   analysisSpecifications,

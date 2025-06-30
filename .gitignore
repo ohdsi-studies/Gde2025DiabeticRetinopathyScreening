@@ -64,3 +64,6 @@ results/
 # JetBrains
 .idea/
 
+# LLM
+.cursor/
+.claude/
