@@ -64,6 +64,9 @@ results/
 # JetBrains
 .idea/
 
+# Apple
+.DS_Store
+
 # LLM
 .cursor/
 .claude/
