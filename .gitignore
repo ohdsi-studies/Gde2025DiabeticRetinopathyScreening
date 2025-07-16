@@ -70,3 +70,6 @@ results/
 # LLM
 .cursor/
 .claude/
+
+# Old
+old*
