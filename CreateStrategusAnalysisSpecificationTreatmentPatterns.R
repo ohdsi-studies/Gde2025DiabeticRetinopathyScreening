@@ -7,7 +7,7 @@ cohorts_v1a <- c(
   2,   # Newly Diagnosed T2DM (3 Years Continuous Observation): target
   110, # DR Screening, In Office
   120, # DR Screening, Telemedicine
-  130  # DR Screening, AIoka
+  130  # DR Screening, AI
 )
 
 # Version 1B: Newly Diagnosed with No Specialty In Office screening
@@ -93,10 +93,10 @@ createTPAnalysisSpec <- function(cohortsToKeep, analysisName) {
     minEraDuration = 0,
     splitEventCohorts = NULL,
     splitTime = NULL,
-    eraCollapseSize = 0,
-    combinationWindow = 0,
-    minPostCombinationDuration = 0,
-    filterTreatments = "Changes",
+    eraCollapseSize = 1460,  # 4 years (365*4) - collapse consecutive same screening types
+    combinationWindow = 30,   # 30 days to identify combination screenings
+    minPostCombinationDuration = 30,  # Minimum 30 days for eras around combinations
+    filterTreatments = "Changes",  # Only show when screening type changes
     maxPathLength = 5
   )
 
