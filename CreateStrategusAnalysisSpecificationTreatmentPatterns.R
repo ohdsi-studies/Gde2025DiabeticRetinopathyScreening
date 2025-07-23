@@ -93,8 +93,8 @@ createTPAnalysisSpec <- function(cohortsToKeep, analysisName) {
     minEraDuration = 0,
     splitEventCohorts = NULL,
     splitTime = NULL,
-    eraCollapseSize = 1460,  # 4 years (365*4) - collapse consecutive same screening types
-    combinationWindow = 30,   # 30 days to identify combination screenings
+    eraCollapseSize = 99999,  # Large value to collapse all consecutive same screening types regardless of time gap
+    combinationWindow = 0,   # Set to 0 to prevent combination detection (no '+' concatenation)
     minPostCombinationDuration = 30,  # Minimum 30 days for eras around combinations
     filterTreatments = "Changes",  # Only show when screening type changes
     maxPathLength = 5
