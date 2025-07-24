@@ -229,7 +229,7 @@
       "RemoteUsername": "erikwestlund",
       "RemoteRepo": "TreatmentPatterns",
       "RemoteRef": "master",
-      "RemoteSha": "d536b499b15b612f9ca6fd5e4f44495404333c0a",
+      "RemoteSha": "9d1ae75316d0e2765b7f4e5fef0793adf1b08b52",
       "Requirements": [
         "Andromeda",
         "DatabaseConnector",
