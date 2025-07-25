@@ -55,7 +55,7 @@ if (!restore_result) {
   # Try to install TreatmentPatterns fork directly first
   cat("Installing TreatmentPatterns fork directly...\n")
   tryCatch({
-    renv::install("erikwestlund/TreatmentPatterns")
+    renv::install("erikwestlund/TreatmentPatterns@gde-fork")
     cat("✓ TreatmentPatterns fork installed\n")
     
     # Try restore again

@@ -228,7 +228,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "erikwestlund",
       "RemoteRepo": "TreatmentPatterns",
-      "RemoteRef": "master",
+      "RemoteRef": "gde-fork",
       "RemoteSha": "9d1ae75316d0e2765b7f4e5fef0793adf1b08b52",
       "Requirements": [
         "Andromeda",
@@ -248,7 +248,7 @@
         "stringi",
         "stringr"
       ],
-      "Hash": "e5456b22cb99e48163de93067a19a71f"
+      "Hash": ""
     },
     "backports": {
       "Package": "backports",
