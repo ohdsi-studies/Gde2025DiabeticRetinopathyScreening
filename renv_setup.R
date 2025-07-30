@@ -55,8 +55,8 @@ if (!restore_result) {
   # Try to install TreatmentPatterns fork directly first
   cat("Installing TreatmentPatterns fork directly...\n")
   tryCatch({
-    renv::install("erikwestlund/TreatmentPatterns@gde-fork")
-    cat("✓ TreatmentPatterns fork installed\n")
+    renv::install("erikwestlund/TreatmentPatterns@f74f189523f60f3e091504e62367fdbe10fda8a5")
+    cat("✓ TreatmentPatterns fork installed (with grouping fix)\n")
     
     # Try restore again
     cat("\nRetrying restore...\n")
@@ -107,6 +107,7 @@ if (restore_result && tp_check && strategus_check) {
   cat("\nThe TreatmentPatterns fork includes fixes for:\n")
   cat("- Era collapse row removal bug\n")
   cat("- Consecutive same-event transitions after combinations\n")
+  cat("- dplyr grouping error with database-backed tables (row_number fix)\n")
 } else {
   cat("⚠ Setup incomplete. Some issues need attention.\n")
   cat("\nTroubleshooting steps:\n")
