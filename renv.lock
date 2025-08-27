@@ -617,10 +617,10 @@
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteUsername": "erikwestlund",
-      "RemoteRepo": "TreatmentPatterns",
+      "RemoteUsername": "benwmar",
+      "RemoteRepo": "TreatmentPatterns-dev",
       "RemoteRef": "gde-fork",
-      "RemoteSha": "f74f189523f60f3e091504e62367fdbe10fda8a5",
+      "RemoteSha": "bca5e4b79356a4c90e012d0ea67c9458baab2645",
       "Requirements": [
         "Andromeda",
         "R",
