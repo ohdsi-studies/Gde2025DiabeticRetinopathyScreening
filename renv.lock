@@ -93,6 +93,17 @@
       ],
       "Hash": "384ce699b1cec0ca3650904c17ef46aa"
     },
+    "CohortPathways": {
+      "Package": "CohortPathways",
+      "Version": "0.0.1",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "OHDSI",
+      "RemoteRepo": "CohortPathways",
+      "RemoteRef": "main",
+      "RemoteSha": "ac7573ecaf8ac8c2dbd6ca71d268abb028f256fa"
+    },
     "DBI": {
       "Package": "DBI",
       "Version": "1.2.3",
@@ -1456,16 +1467,6 @@
         "htmltools"
       ],
       "Hash": "5aab57a3bd297eee1c1d862735972182"
-    },
-    "jsonlite": {
-      "Package": "jsonlite",
-      "Version": "1.8.9",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "methods"
-      ],
-      "Hash": "4e993b65c2c3ffbffce7bb3e2c6f832b"
     },
     "juicyjuice": {
       "Package": "juicyjuice",
