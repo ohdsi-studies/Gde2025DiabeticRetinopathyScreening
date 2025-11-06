@@ -175,4 +175,45 @@ Strategus::execute(
   analysisSpecifications = analysisSpecifications,
   executionSettings = executionSettings,
   connectionDetails = connectionDetails
-)  
+) 
+
+
+# Run CohortPathways Addendum
+targetCohorts <- list(
+  V1 = c(2),
+  V2 = c(11)
+)
+
+eventCohorts <- list(
+  A = c(110, 120, 130),
+  B = c(111, 120, 130)
+)
+
+for (v in names(targetCohorts)) {
+  for (e in names(eventCohorts)) {
+    
+    # Run CohortPathways
+    message(paste0("Running CohortPathways for ", v, e))
+    result <- CohortPathways::executeCohortPathways(
+      connectionDetails = connectionDetails,
+      cohortDatabaseSchema = workDatabaseSchema,
+      cohortTableName = cohortTableName,
+      targetCohortIds = targetCohorts[[v]],
+      eventCohortIds = eventCohorts[[e]],
+      minCellCount = 0,
+      allowRepeats = TRUE,
+      maxDepth = 10,
+      collapseWindow = 0
+    )
+    
+    # Write CohortPathways results
+    baseName <- paste0("CP", tolower(v), tolower(e))
+    write.csv(result$pathwaysAnalysisPathsData, 
+              file = file.path(outputLocation, databaseName, paste0(baseName, ".csv")), 
+              row.names = FALSE)
+    write.csv(result$pathwayAnalysisCodesLong, 
+              file = file.path(outputLocation, databaseName, paste0(baseName, "_codes.csv")), 
+              row.names = FALSE)
+  }
+}
+
